@@ -17,4 +17,11 @@ body {
   border: 3px solid black;
   font-size: 64px;
   text-align: center;
+  cursor: pointer;
+}
+#reset {
+  display: flex;
+  justify-content: center;
+  width: 325px;
+  margin-top: 10px;
 }

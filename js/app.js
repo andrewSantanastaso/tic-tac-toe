@@ -6,8 +6,8 @@ const winningCombos = [
     [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8],
-    [0, 5, 8],
-    [2, 5, 6],
+    [0, 4, 8],
+    [2, 4, 6],
 ]
 
 
@@ -34,6 +34,8 @@ const squareEls = [
 ]
 
 const messageEl = document.querySelector('#message')
+
+const resetBtnEl = document.querySelector('button')
 
 /*-------------------------------- Functions --------------------------------*/
 const init = (event) => {
@@ -64,7 +66,7 @@ const updateMessage = () => {
         messageEl.textContent = "tie"
     }
     else {
-        messageEl.textContent = "Player has won!"
+        messageEl.textContent = `Player has won!`
     }
 }
 const handleClick = (event) => {
@@ -77,6 +79,9 @@ const handleClick = (event) => {
     }
     placePiece(board, squareIndex)
     checkForWinner(board, winningCombos)
+    checkForTie(board, winner)
+    switchPlayerTurn()
+    render()
 }
 
 const placePiece = (board, squareIndex) => {
@@ -96,6 +101,38 @@ const checkForWinner = (board, winningCombos) => {
     }
 }
 
+const checkForTie = (board, winner) => {
+    if (winner) {
+        return
+    }
+
+    if (board.includes('')) {
+        tie = false
+    }
+    else {
+        tie = true
+    }
+
+}
+// console.log(`Tie is ${tie}`)
+
+
+const switchPlayerTurn = () => {
+    if (winner) {
+        return
+    }
+
+    if (turn === 'X') {
+        turn = '0'
+
+        return
+    }
+    if (turn === '0') {
+        turn = 'X'
+
+        return
+    }
+}
 
 
 
@@ -105,3 +142,4 @@ squareEls.forEach(function (square) {
     square.addEventListener('click', handleClick)
 })
 
+resetBtnEl.addEventListener('click', init)
