@@ -76,6 +76,7 @@ const handleClick = (event) => {
         return
     }
     placePiece(board, squareIndex)
+    checkForWinner(board, winningCombos)
 }
 
 const placePiece = (board, squareIndex) => {
@@ -83,7 +84,20 @@ const placePiece = (board, squareIndex) => {
     // console.log(board)
 }
 
-// const checkForWinner()
+const checkForWinner = (board, winningCombos) => {
+    for (let combo of winningCombos) {
+        let A = combo[0]
+        let B = combo[1]
+        let C = combo[2]
+        if (board[A] !== '' && board[A] === board[B] && board[A] === board[C]) {
+            winner = true
+        }
+        console.log(winner)
+    }
+}
+
+
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 window.addEventListener('load', init)
