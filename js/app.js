@@ -13,7 +13,7 @@ const winningCombos = [
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board;
-let turn = 'X'
+let turn;
 let winner;
 let tie;
 
@@ -75,14 +75,15 @@ const handleClick = (event) => {
     if (winner) {
         return
     }
-    placePiece(squareIndex)
+    placePiece(board, squareIndex)
 }
 
-const placePiece = (index) => {
-    board[index] = turn
+const placePiece = (board, squareIndex) => {
+    board[squareIndex] = turn
+    // console.log(board)
 }
 
-const checkForWinner()
+// const checkForWinner()
 
 /*----------------------------- Event Listeners -----------------------------*/
 window.addEventListener('load', init)
