@@ -1,17 +1,38 @@
 /*-------------------------------- Constants --------------------------------*/
-
+const winningCombos = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 5, 8],
+    [2, 5, 6],
+]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board;
-let turn;
+let turn = 'X'
 let winner;
 let tie;
 
 
 /*------------------------ Cached Element References ------------------------*/
 
-const squareEls = document.querySelectorAll('.sqr')
+const squareEls = [
+    document.getElementById('0'),
+    document.getElementById('1'),
+    document.getElementById('2'),
+    document.getElementById('3'),
+    document.getElementById('4'),
+    document.getElementById('5'),
+    document.getElementById('6'),
+    document.getElementById('7'),
+    document.getElementById('8'),
+
+]
+
 const messageEl = document.querySelector('#message')
 
 /*-------------------------------- Functions --------------------------------*/
@@ -24,13 +45,14 @@ const init = (event) => {
     render()
 }
 const render = () => {
-    updateBoard()
+    updateBoard(board, squareEls)
     updateMessage()
 }
-const updateBoard = () => {
-    board.forEach(square => {
-        [square] = squareEls
-        [square] = 'X'
+const updateBoard = (board, squareEls) => {
+    board.forEach((value, index) => {
+        let square = squareEls[index]
+        square.textContent = `${board[index]}`
+
     });
 }
 
@@ -60,7 +82,7 @@ const placePiece = (index) => {
     board[index] = turn
 }
 
-// const checkForWinner()
+const checkForWinner()
 
 /*----------------------------- Event Listeners -----------------------------*/
 window.addEventListener('load', init)
