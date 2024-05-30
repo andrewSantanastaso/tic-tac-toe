@@ -50,6 +50,7 @@ const init = (event) => {
 const render = () => {
     updateBoard()
     updateMessage()
+    resetBtnText()
 }
 const updateBoard = () => {
     board.forEach((value, index) => {
@@ -132,7 +133,13 @@ const switchPlayerTurn = () => {
         return
     }
 }
-
+const resetBtnText = () => {
+    if (winner || tie)
+        resetBtnEl.textContent = 'Play Again?'
+    else {
+        resetBtnEl.textContent = "RESET"
+    }
+}
 
 
 /*----------------------------- Event Listeners -----------------------------*/

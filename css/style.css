@@ -4,11 +4,25 @@ body {
   font-family: system-ui, sans-serif;
   margin: 0;
 }
+#game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid red;
+  width: 100vw;
+  height: fit-content;
 
+  /* max-height: fit-content; */
+  /* max-width: fit-content; */
+}
 .board {
   display: flex;
   flex-wrap: wrap;
   width: 325px;
+  /* width: 50vw; */
+  margin: auto;
+  font-size: 1em;
 }
 
 .sqr {
