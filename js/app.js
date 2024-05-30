@@ -9,8 +9,8 @@ const winningCombos = [
     [0, 4, 8],
     [2, 4, 6],
 ]
-
-
+let X = "❌"
+let O = "0️⃣"
 /*---------------------------- Variables (state) ----------------------------*/
 let board;
 let turn;
@@ -42,7 +42,7 @@ const init = (event) => {
     console.log('game initialized')
     // board = ['', '', '', '', '', '', '', '', '']
     board = Array(9).fill('');
-    turn = '❌'
+    turn = X
     winner = false
     tie = false
     render()
@@ -122,8 +122,8 @@ const switchPlayerTurn = () => {
         return
     }
 
-    if (turn === '❌') {
-        turn = '0️⃣'
+    if (turn === X) {
+        turn = O
 
         return
     }
