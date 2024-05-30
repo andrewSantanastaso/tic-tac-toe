@@ -40,7 +40,8 @@ const resetBtnEl = document.querySelector('button')
 /*-------------------------------- Functions --------------------------------*/
 const init = (event) => {
     console.log('game initialized')
-    board = ['', '', '', '', '', '', '', '', '']
+    // board = ['', '', '', '', '', '', '', '', '']
+    board = Array(9).fill('');
     turn = 'X'
     winner = false
     tie = false
@@ -77,7 +78,7 @@ const handleClick = (event) => {
 
     placePiece(board, squareIndex)
     checkForWinner(board, winningCombos)
-    checkForTie(board, winner)
+    checkForTie()
     switchPlayerTurn()
     render()
 }
