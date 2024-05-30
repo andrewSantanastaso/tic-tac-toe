@@ -42,7 +42,7 @@ const init = (event) => {
     console.log('game initialized')
     // board = ['', '', '', '', '', '', '', '', '']
     board = Array(9).fill('');
-    turn = 'X'
+    turn = '❌'
     winner = false
     tie = false
     render()
@@ -122,13 +122,13 @@ const switchPlayerTurn = () => {
         return
     }
 
-    if (turn === 'X') {
-        turn = '0'
+    if (turn === '❌') {
+        turn = '0️⃣'
 
         return
     }
-    if (turn === '0') {
-        turn = 'X'
+    if (turn === '0️⃣') {
+        turn = '❌'
 
         return
     }
