@@ -47,36 +47,34 @@ const init = (event) => {
     render()
 }
 const render = () => {
-    updateBoard(board, squareEls)
+    updateBoard()
     updateMessage()
 }
-const updateBoard = (board, squareEls) => {
+const updateBoard = () => {
     board.forEach((value, index) => {
-        let square = squareEls[index]
-        square.textContent = `${board[index]}`
-
+        // let square = squareEls[index]
+        // square.textContent = `${board[index]}`
+        squareEls[index].textContent = value;
     });
 }
 
 const updateMessage = () => {
-    if (!winner && !tie) {
-        messageEl.textContent = `It is ${turn}'s turn`
+    if (winner) {
+        messageEl.textContent = `${turn} has won!`
     }
-    else if (!winner && tie) {
-        messageEl.textContent = "tie"
+    else if (tie) {
+        messageEl.textContent = "It's a tie!"
     }
     else {
-        messageEl.textContent = `Player has won!`
+        messageEl.textContent = `It is ${turn}'s turn`
     }
 }
 const handleClick = (event) => {
     const squareIndex = event.target.id
-    if (board[squareIndex]) {
+    if (board[squareIndex] || winner) {
         return
     }
-    if (winner) {
-        return
-    }
+
     placePiece(board, squareIndex)
     checkForWinner(board, winningCombos)
     checkForTie(board, winner)
@@ -94,14 +92,14 @@ const checkForWinner = (board, winningCombos) => {
         let A = combo[0]
         let B = combo[1]
         let C = combo[2]
-        if (board[A] !== '' && board[A] === board[B] && board[A] === board[C]) {
+        if (board[A] && board[A] === board[B] && board[A] === board[C]) {
             winner = true
         }
-        console.log(winner)
+        // console.log(winner)
     }
 }
 
-const checkForTie = (board, winner) => {
+const checkForTie = () => {
     if (winner) {
         return
     }
@@ -138,8 +136,7 @@ const switchPlayerTurn = () => {
 
 /*----------------------------- Event Listeners -----------------------------*/
 window.addEventListener('load', init)
-squareEls.forEach(function (square) {
+squareEls.forEach(square => {
     square.addEventListener('click', handleClick)
 })
-
 resetBtnEl.addEventListener('click', init)
