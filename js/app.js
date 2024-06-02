@@ -136,8 +136,8 @@ const switchPlayerTurn = () => {
 
         return
     }
-    if (turn === '0️⃣') {
-        turn = '❌'
+    if (turn === O) {
+        turn = X
 
         return
     }
