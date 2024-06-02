@@ -37,6 +37,9 @@ const messageEl = document.querySelector('#message')
 
 const resetBtnEl = document.querySelector('button')
 
+const boardEl = document.querySelector('.board')
+const bodyEl = document.querySelector('body')
+
 /*-------------------------------- Functions --------------------------------*/
 const init = (event) => {
     console.log('game initialized')
@@ -72,6 +75,10 @@ const updateMessage = () => {
     }
 }
 const handleClick = (event) => {
+    if (!squareEls.includes(event.target)) {
+        return
+    }
+
     const squareIndex = event.target.id
     if (board[squareIndex] || winner) {
         return
@@ -96,6 +103,8 @@ const checkForWinner = (board, winningCombos) => {
         let C = combo[2]
         if (board[A] && board[A] === board[B] && board[A] === board[C]) {
             winner = true
+            // board[A].style.backgrounColor = 'green'
+
         }
         // console.log(winner)
     }
@@ -144,7 +153,8 @@ const resetBtnText = () => {
 
 /*----------------------------- Event Listeners -----------------------------*/
 window.addEventListener('load', init)
-squareEls.forEach(square => {
-    square.addEventListener('click', handleClick)
-})
+// squareEls.forEach(square => {
+//     square.addEventListener('click', handleClick)
+// })
+bodyEl.addEventListener('click', handleClick)
 resetBtnEl.addEventListener('click', init)
