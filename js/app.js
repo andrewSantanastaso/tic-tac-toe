@@ -98,9 +98,10 @@ const placePiece = (board, squareIndex) => {
 
 const checkForWinner = (board, winningCombos) => {
     for (let combo of winningCombos) {
-        let A = combo[0]
-        let B = combo[1]
-        let C = combo[2]
+        let [A, B, C] = [combo[0], combo[1], combo[2]]
+        // let B = combo[1]
+        // let C = combo[2]
+        // combo = [A, B, C]
         if (board[A] && board[A] === board[B] && board[A] === board[C]) {
             winner = true
             // board[A].style.backgrounColor = 'green'
